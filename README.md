@@ -15,7 +15,7 @@ based on numerous factors including password policy. This is going to be used
 in conjuction with my Person Generator script to populate users onto my test domain with
 somewhat realistic passwords.
 
-This version of the script accepts two parameters- a username and a wordlist file. I've
+This version of the script accepts three parameters- number of hashes, wordlist, and arguments. I've
 included a basic wordlist file that is actually a trimmed down common password list, which
 happens to double as a list of very basic words. The username is used in the event that the
 script hits the one percent and populates a user's password as the same thing as their username.
