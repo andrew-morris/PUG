@@ -3,9 +3,32 @@ PUG
 
 #Phantom User Generator
 
+## Disclaimer
+
+I'm a horrible programmer. Don't judge me.
+
 ## Summary
 
-I'll write this later
+This is a stupid script I wrote to generate 'realistic' passwords based on what I've seen
+when cracking passwords on real compromised domain controllers. Obviously this can vary 
+based on numerous factors including password policy. This is going to be used
+in conjuction with my Person Generator script to populate users onto my test domain with
+somewhat realistic passwords.
+
+This version of the script accepts two parameters- a username and a wordlist file. I've
+included a basic wordlist file that is actually a trimmed down common password list, which
+happens to double as a list of very basic words. The username is used in the event that the
+script hits the one percent and populates a user's password as the same thing as their username.
+
+Feel free to modify the integer ranges as you feel necessary. There is no statistical analysis
+behind these numbers. They literally came off the top of my head.
+
+Again, this is a very basic script and I plan on improving it with additional features. 
+Feel free to distribute or modify, I only ask that you give credit where credit is due.
+
+Be well,
+
+-Andrew
 
 ## Usage
 
