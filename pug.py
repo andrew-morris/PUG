@@ -84,7 +84,7 @@ if len(sys.argv) < 3:
 
 ''' Some global variables here '''
 number = sys.argv[1]
-randomNumber = random.randint(73,87)
+randomNumber = random.randint(0,100)
 
 try:
 	with open(sys.argv[2], 'r') as f:
