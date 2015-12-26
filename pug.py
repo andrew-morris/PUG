@@ -127,95 +127,77 @@ def generateHashNTLM(username):
 	if randomNumber <=3: # 3%
 		password = pass_Username(username)
 		print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
-	else:
-		if randomNumber <=6: # 3%
-			password = pass_Password()
+	elif randomNumber <=6: # 3%
+		password = pass_Password()
+		print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
+	elif randomNumber <=12: # 6%
+		password = pass_DictWord_DigitsFirst()
+		print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
+	elif randomNumber <=64: # 52%
+		password = pass_DictWord()
+		print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
+	elif randomNumber <=74: # 10%
+		password = random_Password_ULD()
+		print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
+	elif randomNumber <=80: # 6%
+		password = random_ShittyWord()
+		print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
+	elif randomNumber <=87: # 7%
+		password = random_Password_LD()
+		print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
+	elif randomNumber <=88: # 1%
+		password = ""
+		print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
+	elif randomNumber <=89: # 1%
+		password = "andrewmorris"
+		print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
+	elif randomNumber <=98: # 9%
+		password = pass_DictWord_Upper()
+		try: 
+			print username+':'+str(random.randint(1000,2000))+'AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
+		except AttributeError: # This is in case the word starts with something other than a letter
 			print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
-		else:
-			if randomNumber <=12: # 6%
-				password = pass_DictWord_DigitsFirst()
-				print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
-			else:
-				if randomNumber <=64: # 52%
-					password = pass_DictWord()
-					print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
-				else:
-					if randomNumber <=74: # 10%
-						password = random_Password_ULD()
-						print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
-					else:
-						if randomNumber <=80: # 6%
-							password = random_ShittyWord()
-							print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
-						else:
-							if randomNumber <=87: # 7%
-								password = random_Password_LD()
-								print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
-							else:
-								if randomNumber <=88: # 1%
-									password = ""
-									print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
-								else:
-									if randomNumber <=89: # 1%
-										password = "andrewmorris"
-										print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
-									else:
-										if randomNumber <=98: # 9%
-											password = pass_DictWord_Upper()
-											try: print username+':'+str(random.randint(1000,2000))+'AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
-											except AttributeError: # This is in case the word starts with something other than a letter
-												print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
-										else:
-											if randomNumber <=100: # 2%
-												password = random_Password_ULDS()
-												print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
+	elif randomNumber <=100: # 2%
+		password = random_Password_ULDS()
+		print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
 
 def generateHashLM(username):
 	if randomNumber <=3: # 3%
 		password = pass_Username(username)
 		print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
-	else:
-		if randomNumber <=6: # 3%
-			password = pass_Password()
+	elif randomNumber <=6: # 3%
+		password = pass_Password()
+		print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
+	elif randomNumber <=12: # 6%
+		password = pass_DictWord_DigitsFirst()
+		print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
+	elif randomNumber <=64: # 52%
+		password = pass_DictWord()
+		print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
+	elif randomNumber <=74: # 10%
+		password = random_Password_ULD()
+		print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
+	elif randomNumber <=80: # 6%
+		password = random_ShittyWord()
+		print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
+	elif randomNumber <=87: # 7%
+		password = random_Password_LD()
+		print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
+	elif randomNumber <=88: # 1%
+		password = ""
+		print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
+	elif randomNumber <=89: # 1%
+		password = "andrewmorris"
+		print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
+	elif randomNumber <=98: # 9%
+		password = pass_DictWord_Upper()
+		try: 
 			print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
-		else:
-			if randomNumber <=12: # 6%
-				password = pass_DictWord_DigitsFirst()
-				print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
-			else:
-				if randomNumber <=64: # 52%
-					password = pass_DictWord()
-					print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
-				else:
-					if randomNumber <=74: # 10%
-						password = random_Password_ULD()
-						print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
-					else:
-						if randomNumber <=80: # 6%
-							password = random_ShittyWord()
-							print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
-						else:
-							if randomNumber <=87: # 7%
-								password = random_Password_LD()
-								print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
-							else:
-								if randomNumber <=88: # 1%
-									password = ""
-									print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
-								else:
-									if randomNumber <=89: # 1%
-										password = "andrewmorris"
-										print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
-									else:
-										if randomNumber <=98: # 9%
-											password = pass_DictWord_Upper()
-											try: print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
-											except AttributeError: # This is in case the word starts with something other than a letter
-												print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
-										else:
-											if randomNumber <=100: # 2%
-												password = random_Password_ULDS()
-												print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
+		except AttributeError: # This is in case the word starts with something other than a letter
+			print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
+	elif randomNumber <=100: # 2%
+		password = random_Password_ULDS()
+		print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
 
 def generateUser(lastNames, firstNames):
 	firstName = random.choice(firstNames)
