@@ -210,10 +210,10 @@ def generateUser(lastNames, firstNames):
 
 def main():
 	parser = argparse.ArgumentParser()
-    parser.add_argument('--hashes', help='output password hashes in pwdump format', action='store_true', default=False, dest='hashes')
-    parser.add_argument('--ntlm', help='include NTLM password hashes', action='store_true', default=False, dest='ntlm')
-    parser.add_argument('--lm', help='include deprecated LM hashes', action='store_true', default=False, dest='lm')
-    parser.add_argument('--count', help='amount of items to generate', action='store_true', default=10, dest='count')
+	parser.add_argument('--hashes', help='output password hashes in pwdump format', action='store_true', default=False, dest='hashes')
+	parser.add_argument('--ntlm', help='include NTLM password hashes', action='store_true', default=False, dest='ntlm')
+	parser.add_argument('--lm', help='include deprecated LM hashes', action='store_true', default=False, dest='lm')
+	parser.add_argument('--count', help='amount of items to generate', action='store_true', default=10, dest='count')
 
 #	if '--ntlm' in sys.argv:
 #		for i in range(0, int(number)):
