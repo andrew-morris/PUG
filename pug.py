@@ -208,7 +208,7 @@ def generateUser(lastNames, firstNames):
 	name = firstNames[0]+lastNames
 	return name.upper()
 
-def letsGetSomeHashesUpInThisBitch():
+def main():
 	if '--ntlm' in sys.argv:
 		for i in range(0, int(number)):
 			name = generateUser(random.choice(lastNames), random.choice(firstNames))
@@ -219,7 +219,7 @@ def letsGetSomeHashesUpInThisBitch():
 			generateHashLM(name)
 
 try:
-	letsGetSomeHashesUpInThisBitch()
+	main()
 except:
 	print "[!] Error: Something broke. Sorry :("
 	exit()
