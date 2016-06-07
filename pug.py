@@ -5,7 +5,7 @@ AKA: Phantom User Generator
 AKA: PUG
 
 Andrew Morris
-andrew.morris[at]intrepidusgroup com
+amorris@endgame.com
 morr.drew[at]gmail com
 March 20, 2013
 
