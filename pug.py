@@ -15,6 +15,11 @@ UPDATE:
 I updated a few things, but this code is still godawful. I'll optimize the functions and "pythofy" this with some classes
 soon. Email me if you have any questions.
 
+UPDATE:
+06/07/2016
+
+I'M BRINGING THIS BACK TO LIFE
+
 CHANGELOG:
 
 -v0.2
