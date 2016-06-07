@@ -56,16 +56,15 @@ lastNameFile = 'last-names.txt'
 shitty = ['welcome','changeme','12345','secret','qwerty','123456','aaaaaa','internet','asd123', 'root', 'admin']
 commonSymbols = '!?@$&*+-' 
 uncommonSymbols = '%^()"/<>~`[]{}|_'
+number = sys.argv[1]
+randomNumber = random.randint(0,100)
+
 
 if len(sys.argv) < 3:
 	print "[+] Usage: 	python "+sys.argv[0]+" <number> <wordlist> <optional arguments>"
 	print "[+] Example:	python %s 50 word.lst" % sys.argv[0]
 	print "[+] Arguments:	--ntlm 		Generate empty LM hashes, force NTLM"
   	sys.exit()
-
-''' Some global variables here '''
-number = sys.argv[1]
-randomNumber = random.randint(0,100)
 
 try:
 	with open(sys.argv[2], 'r') as f:
