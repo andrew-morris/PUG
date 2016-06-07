@@ -35,20 +35,10 @@ hash cracking.
 Updated the script to generate the hashes themselves into John/Ophcrack format to benchmark hash cracking (for E.F.)
 
 """
-##############################################
-# CHANGE THESE VARIABLES FOR YOUR OWN SYSTEM #
-##############################################
-
-firstNameFile = 'male-names.txt'
-lastNameFile = 'last-names.txt'
-
-shitty = ['welcome','changeme','12345','secret','qwerty','123456','aaaaaa','internet','asd123', 'root', 'admin']
-commonSymbols = '!?@$&*+-' # I tried to do the symbols as a list, but Python didn't like that, so I defined the symbols in a string instead
-uncommonSymbols = '%^()"/<>~`[]{}|_'
-
 import sys
 import random 
 import string
+import argparse
 
 try:
 	import smbpasswd
@@ -57,6 +47,15 @@ except ImportError:
 	print "[+] Download from here: https://code.google.com/p/py-smbpasswd/"
 	print "[+] Or install with 'sudo easy_install smbpasswd"
 	exit()
+
+
+######### Some global variables
+
+firstNameFile = 'male-names.txt'
+lastNameFile = 'last-names.txt'
+shitty = ['welcome','changeme','12345','secret','qwerty','123456','aaaaaa','internet','asd123', 'root', 'admin']
+commonSymbols = '!?@$&*+-' 
+uncommonSymbols = '%^()"/<>~`[]{}|_'
 
 if len(sys.argv) < 3:
 	print "[+] Usage: 	python "+sys.argv[0]+" <number> <wordlist> <optional arguments>"
