@@ -126,7 +126,7 @@ def pass_DictWord_DigitsFirst():
 	return password
 
 def generateHashNTLM(username):
-	emptyLM = 'AAD3B435B51404EEAAD3B435B51404EE'
+	#emptyLM = 'AAD3B435B51404EEAAD3B435B51404EE'
 	if randomNumber <=3: # 3%
 		password = pass_Username(username)
 		print username+':'+str(random.randint(1000,2000))+':AAD3B435B51404EEAAD3B435B51404EE:%s:::' % smbpasswd.nthash(password)
@@ -209,20 +209,22 @@ def generateUser(lastNames, firstNames):
 	return name.upper()
 
 def main():
-	if '--ntlm' in sys.argv:
-		for i in range(0, int(number)):
-			name = generateUser(random.choice(lastNames), random.choice(firstNames))
-			generateHashNTLM(name)
-	else:
-		for i in range(0, int(number)):
-			name = generateUser(random.choice(lastNames), random.choice(firstNames))
-			generateHashLM(name)
+	parser = argparse.ArgumentParser()
+    parser.add_argument('--hashes', help='output password hashes in pwdump format', action='store_true', default=False, dest='hashes')
+    parser.add_argument('--ntlm', help='include NTLM password hashes', action='store_true', default=False, dest='ntlm')
+    parser.add_argument('--lm', help='include deprecated LM hashes', action='store_true', default=False, dest='lm')
+    parser.add_argument('--count', help='amount of items to generate', action='store_true', default=10, dest='count')
 
-try:
-	main()
-except:
-	print "[!] Error: Something broke. Sorry :("
-	exit()
+#	if '--ntlm' in sys.argv:
+#		for i in range(0, int(number)):
+#			name = generateUser(random.choice(lastNames), random.choice(firstNames))
+#			generateHashNTLM(name)
+#	else:
+#		for i in range(0, int(number)):
+#			name = generateUser(random.choice(lastNames), random.choice(firstNames))
+
+main()
+
 
 
 
