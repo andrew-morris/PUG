@@ -60,11 +60,11 @@ number = sys.argv[1]
 randomNumber = random.randint(0,100)
 
 
-if len(sys.argv) < 3:
-	print "[+] Usage: 	python "+sys.argv[0]+" <number> <wordlist> <optional arguments>"
-	print "[+] Example:	python %s 50 word.lst" % sys.argv[0]
-	print "[+] Arguments:	--ntlm 		Generate empty LM hashes, force NTLM"
-  	sys.exit()
+#if len(sys.argv) < 3:
+#	print "[+] Usage: 	python "+sys.argv[0]+" <number> <wordlist> <optional arguments>"
+#	print "[+] Example:	python %s 50 word.lst" % sys.argv[0]
+#	print "[+] Arguments:	--ntlm 		Generate empty LM hashes, force NTLM"
+#  	sys.exit()
 
 try:
 	with open(sys.argv[2], 'r') as f:
