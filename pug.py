@@ -35,7 +35,6 @@ hash cracking.
 Updated the script to generate the hashes themselves into John/Ophcrack format to benchmark hash cracking (for E.F.)
 
 """
-import sys
 import random 
 import string
 import argparse
@@ -122,7 +121,7 @@ def generateHashNTLM(username, randomNumber, randomWords):
 		password = ""
 		print username+':'+str(random.randint(1000,2000))+':%s:%s:::' % (emptyLM, smbpasswd.nthash(password))
 	elif randomNumber <=89: # 1%
-		password = "andrewmorris"
+		password = "hunter2"
 		print username+':'+str(random.randint(1000,2000))+':%s:%s:::' % (emptyLM, smbpasswd.nthash(password))
 	elif randomNumber <=98: # 9%
 		password = pass_DictWord_Upper(randomWords)
@@ -160,7 +159,7 @@ def generateHashLM(username, randomNumber, randomWords):
 		password = ""
 		print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
 	elif randomNumber <=89: # 1%
-		password = "andrewmorris"
+		password = "hunter2"
 		print username+':'+str(random.randint(1000,2000))+':'+'%s:%s:::' % smbpasswd.hash(password)
 	elif randomNumber <=98: # 9%
 		password = pass_DictWord_Upper(randomWords)
@@ -198,7 +197,7 @@ def generatePlaintext(username, randomNumber, randomWords):
 		password = ""
 		print "[+] %s\t%s " % (username, password)
 	elif randomNumber <=89: # 1%
-		password = "andrewmorris"
+		password = "hunter2"
 		print "[+] %s\t%s " % (username, password)
 	elif randomNumber <=98: # 9%
 		password = pass_DictWord_Upper(randomWords)
@@ -214,12 +213,12 @@ def generateUser(lastNames, firstNames):
 	firstName = random.choice(firstNames)
 	lastName = random.choice(lastNames)
 	name = firstNames[0]+lastNames
-	return name.upper()
+	return name.lower()
 
 def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--hashes', help='output password hashes in pwdump format', action='store_true', default=False, dest='hashes')
-	parser.add_argument('--plaintext', help='output password in plaintext', action='store_true', default=True, dest='plaintext')
+	#parser.add_argument('--plaintext', help='output password in plaintext', action='store_true', default=True, dest='plaintext')
 	parser.add_argument('--ntlm', help='include NTLM password hashes', action='store_true', default=False, dest='ntlm')
 	parser.add_argument('--lm', help='include deprecated LM hashes', action='store_true', default=False, dest='lm')
 	parser.add_argument('--count', help='amount of items to generate', type=int, action='store', default=10, dest='count')
@@ -257,8 +256,7 @@ def main():
 				generateHashNTLM(name, randomNumber, randomWords)
 			if args.lm:
 				generateHashLM(name, randomNumber, randomWords)
-
-	if args.plaintext:
+	else:
 		for i in range(0, args.count):
 			name = generateUser(random.choice(lastNames), random.choice(firstNames))
 			randomNumber = random.randint(0,100)
