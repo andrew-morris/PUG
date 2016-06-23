@@ -98,12 +98,12 @@ def generateHashNTLM(username, randomNumber, randomWords):
 	elif randomNumber <=98: # 9%
 		password = pass_DictWord_Upper(randomWords)
 		try: 
-			print username+':'+str(random.randint(1000,2000))+'%s:%s:::' % (smbpasswd.nthash(password), emptyLM)
+			print username+':'+str(random.randint(1000,2000))+'%s:%s:::' % (emptyLM, smbpasswd.nthash(password))
 		except AttributeError: # This is in case the word starts with something other than a letter
-			print username+':'+str(random.randint(1000,2000))+':%s:%s:::' % smbpasswd.nthash(password)
+			print username+':'+str(random.randint(1000,2000))+':%s:%s:::' % (emptyLM, smbpasswd.nthash(password))
 	elif randomNumber <=100: # 2%
 		password = random_Password_ULDS()
-		print username+':'+str(random.randint(1000,2000))+':%s:%s:::' % (smbpasswd.nthash(password), emptyLM)
+		print username+':'+str(random.randint(1000,2000))+':%s:%s:::' % (emptyLM, smbpasswd.nthash(password))
 
 def generateHashLM(username, randomNumber, randomWords):
 	if randomNumber <=3: # 3%
