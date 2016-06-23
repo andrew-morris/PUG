@@ -1,38 +1,10 @@
 #!/usr/bin/python
 """
-Realistic Password Generator v0.32
-AKA: Phantom User Generator
-AKA: PUG
+Phantom User Generator
 
 Andrew Morris
-amorris@endgame.com
+amorris[at]endgame com
 morr.drew[at]gmail com
-March 20, 2013
-
-UPDATE:
-02/26/2014
-
-I updated a few things, but this code is still godawful. I'll optimize the functions and "pythofy" this with some classes
-soon. Email me if you have any questions.
-
-UPDATE:
-06/07/2016
-
-I'M BRINGING THIS BACK TO LIFE
-
-CHANGELOG:
-
--v0.2
-Added some support for symbols. This was basically done by defining two strings containing common and less common symbols.
-I'll also add more functions to the script to contain symbol stuff. Whenever I figure out how to work with dictionaries I'll
-integrate a l33t translator for certain passwords.
--v0.3
-Modified output to be Windows CMD friendly for adding users
--v0.31
-Added support for creating John/Ophcrack friendly LM/NTLM hash dumps to skip the whole domain process and just benchmark
-hash cracking.
--v0.32
-Updated the script to generate the hashes themselves into John/Ophcrack format to benchmark hash cracking (for E.F.)
 
 """
 import random 
@@ -44,7 +16,7 @@ try:
 except ImportError:
 	print "[!] Error: pysmbpasswd module not found"
 	print "[+] Download from here: https://code.google.com/p/py-smbpasswd/"
-	print "[+] Or install with 'sudo easy_install smbpasswd"
+        print "[+] Or install with 'pip install smbpasswd'"
 	exit()
 
 
@@ -55,6 +27,7 @@ lastNameFile = 'last-names.txt'
 shitty = ['welcome','changeme','12345','secret','qwerty','123456','aaaaaa','internet','asd123', 'root', 'admin']
 commonSymbols = '!?@$&*+-' 
 uncommonSymbols = '%^()"/<>~`[]{}|_'
+emptyLM = 'AAD3B435B51404EEAAD3B435B51404EE'
 
 def pass_Username(user):
 	password = user+"1"
@@ -95,7 +68,6 @@ def pass_DictWord_DigitsFirst(randomWords):
 	return password
 
 def generateHashNTLM(username, randomNumber, randomWords):
-	emptyLM = 'AAD3B435B51404EEAAD3B435B51404EE'
 	if randomNumber <=3: # 3%
 		password = pass_Username(username)
 		print username+':'+str(random.randint(1000,2000))+':%s:%s:::' % (emptyLM, smbpasswd.nthash(password))
