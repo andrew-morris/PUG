@@ -1,7 +1,5 @@
-PUG
-===
-
-#Phantom User Generator
+Phantom User Generator
+======================
 
 ## Summary
 
