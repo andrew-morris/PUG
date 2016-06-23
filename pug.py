@@ -95,7 +95,7 @@ def pass_DictWord_DigitsFirst(randomWords):
 	return password
 
 def generateHashNTLM(username, randomNumber, randomWords):
-	#emptyLM = 'AAD3B435B51404EEAAD3B435B51404EE'
+	emptyLM = 'AAD3B435B51404EEAAD3B435B51404EE'
 	if randomNumber <=3: # 3%
 		password = pass_Username(username)
 		print username+':'+str(random.randint(1000,2000))+':%s:%s:::' % (emptyLM, smbpasswd.nthash(password))
@@ -126,12 +126,12 @@ def generateHashNTLM(username, randomNumber, randomWords):
 	elif randomNumber <=98: # 9%
 		password = pass_DictWord_Upper(randomWords)
 		try: 
-			print username+':'+str(random.randint(1000,2000))+'%s:%s:::' % smbpasswd.nthash(password)
+			print username+':'+str(random.randint(1000,2000))+'%s:%s:::' % (smbpasswd.nthash(password), emptyLM)
 		except AttributeError: # This is in case the word starts with something other than a letter
 			print username+':'+str(random.randint(1000,2000))+':%s:%s:::' % smbpasswd.nthash(password)
 	elif randomNumber <=100: # 2%
 		password = random_Password_ULDS()
-		print username+':'+str(random.randint(1000,2000))+':%s:%s:::' % smbpasswd.nthash(password)
+		print username+':'+str(random.randint(1000,2000))+':%s:%s:::' % (smbpasswd.nthash(password), emptyLM)
 
 def generateHashLM(username, randomNumber, randomWords):
 	if randomNumber <=3: # 3%
@@ -209,6 +209,82 @@ def generatePlaintext(username, randomNumber, randomWords):
 		password = random_Password_ULDS()
 		print "[+] %s\t%s " % (username, password)
 
+def generateCmd(username, randomNumber, randomWords):
+	if randomNumber <=3: # 3%
+		password = pass_Username(username)
+		print "net user %s %s /add" % (username, password)
+	elif randomNumber <=6: # 3%
+		password = pass_Password()
+		print "net user %s %s /add" % (username, password)
+	elif randomNumber <=12: # 6%
+		password = pass_DictWord_DigitsFirst(randomWords)
+		print "net user %s %s /add" % (username, password)
+	elif randomNumber <=64: # 52%
+		password = pass_DictWord(randomWords)
+		print "net user %s %s /add" % (username, password)
+	elif randomNumber <=74: # 10%
+		password = random_Password_ULD()
+		print "net user %s %s /add" % (username, password)
+	elif randomNumber <=80: # 6%
+		password = random_ShittyWord()
+		print "net user %s %s /add" % (username, password)
+	elif randomNumber <=87: # 7%
+		password = random_Password_LD()
+		print "net user %s %s /add" % (username, password)
+	elif randomNumber <=88: # 1%
+		password = ""
+		print "net user %s %s /add" % (username, password)
+	elif randomNumber <=89: # 1%
+		password = "hunter2"
+		print "net user %s %s /add" % (username, password)
+	elif randomNumber <=98: # 9%
+		password = pass_DictWord_Upper(randomWords)
+		try: 
+			print "net user %s %s /add" % (username, password)
+		except AttributeError: # This is in case the word starts with something other than a letter
+			print "net user %s %s /add" % (username, password)
+	elif randomNumber <=100: # 2%
+		password = random_Password_ULDS()
+		print "net user %s %s /add" % (username, password)
+
+def generateCmdDomain(username, randomNumber, randomWords):
+	if randomNumber <=3: # 3%
+		password = pass_Username(username)
+		print "net user %s %s /add /domain" % (username, password)
+	elif randomNumber <=6: # 3%
+		password = pass_Password()
+		print "net user %s %s /add /domain" % (username, password)
+	elif randomNumber <=12: # 6%
+		password = pass_DictWord_DigitsFirst(randomWords)
+		print "net user %s %s /add /domain" % (username, password)
+	elif randomNumber <=64: # 52%
+		password = pass_DictWord(randomWords)
+		print "net user %s %s /add /domain" % (username, password)
+	elif randomNumber <=74: # 10%
+		password = random_Password_ULD()
+		print "net user %s %s /add /domain" % (username, password)
+	elif randomNumber <=80: # 6%
+		password = random_ShittyWord()
+		print "net user %s %s /add /domain" % (username, password)
+	elif randomNumber <=87: # 7%
+		password = random_Password_LD()
+		print "net user %s %s /add /domain" % (username, password)
+	elif randomNumber <=88: # 1%
+		password = ""
+		print "net user %s %s /add /domain" % (username, password)
+	elif randomNumber <=89: # 1%
+		password = "hunter2"
+		print "net user %s %s /add /domain" % (username, password)
+	elif randomNumber <=98: # 9%
+		password = pass_DictWord_Upper(randomWords)
+		try: 
+			print "net user %s %s /add /domain" % (username, password)
+		except AttributeError: # This is in case the word starts with something other than a letter
+			print "net user %s %s /add /domain" % (username, password)
+	elif randomNumber <=100: # 2%
+		password = random_Password_ULDS()
+		print "net user %s %s /add /domain" % (username, password)
+
 def generateUser(lastNames, firstNames):
 	firstName = random.choice(firstNames)
 	lastName = random.choice(lastNames)
@@ -218,13 +294,14 @@ def generateUser(lastNames, firstNames):
 def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--hashes', help='output password hashes in pwdump format', action='store_true', default=False, dest='hashes')
-	#parser.add_argument('--plaintext', help='output password in plaintext', action='store_true', default=True, dest='plaintext')
 	parser.add_argument('--ntlm', help='include NTLM password hashes', action='store_true', default=False, dest='ntlm')
 	parser.add_argument('--lm', help='include deprecated LM hashes', action='store_true', default=False, dest='lm')
 	parser.add_argument('--count', help='amount of items to generate', type=int, action='store', default=10, dest='count')
 	parser.add_argument('--first', help='file where first names are stored, default is data/male-names.txt', action='store', default="data/male-names.txt", dest='firstNameFile')
 	parser.add_argument('--last', help='file where last names are stored, default is data/last-names.txt', action='store', default="data/last-names.txt", dest='lastNameFile')
 	parser.add_argument('--wordlist', help="seed file for passwords to be generated from, default is data/word.lst", action='store', default="data/word.lst", dest='wordlistFile')
+	parser.add_argument('--cmd', help="output username and password in 'net user jsmith password /add' format for use on Windows", action="store_true", default=False, dest='cmd')
+	parser.add_argument('--cmd-domain', help="output username and password in 'net user jsmith password /add /domain' format for use on Windows AD", action="store_true", default=False, dest='cmdDomain')
 	args = parser.parse_args()	
 
 	try:
@@ -256,6 +333,16 @@ def main():
 				generateHashNTLM(name, randomNumber, randomWords)
 			if args.lm:
 				generateHashLM(name, randomNumber, randomWords)
+	elif args.cmd:
+		for i in range(0, args.count):
+			name = generateUser(random.choice(lastNames), random.choice(firstNames))
+			randomNumber = random.randint(0,100)
+			generateCmd(name, randomNumber, randomWords)
+	elif args.cmdDomain:
+		for i in range(0, args.count):
+			name = generateUser(random.choice(lastNames), random.choice(firstNames))
+			randomNumber = random.randint(0,100)
+			generateCmdDomain(name, randomNumber, randomWords)		
 	else:
 		for i in range(0, args.count):
 			name = generateUser(random.choice(lastNames), random.choice(firstNames))
