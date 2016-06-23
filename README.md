@@ -33,8 +33,28 @@ Be well,
 ## Usage
 
 ```
-python pug.py <number> <wordlist> <optional arguments>
-  --ntlm 		Generate empty LM hashes, force NTLM
+usage: pug.py [-h] [--hashes] [--ntlm] [--lm] [--count COUNT]
+              [--first FIRSTNAMEFILE] [--last LASTNAMEFILE]
+              [--wordlist WORDLISTFILE] [--cmd] [--cmd-domain]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --hashes              output password hashes in pwdump format
+  --ntlm                include NTLM password hashes
+  --lm                  include deprecated LM hashes
+  --count COUNT         amount of items to generate
+  --first FIRSTNAMEFILE
+                        file where first names are stored, default is data
+                        /male-names.txt
+  --last LASTNAMEFILE   file where last names are stored, default is data
+                        /last-names.txt
+  --wordlist WORDLISTFILE
+                        seed file for passwords to be generated from, default
+                        is data/word.lst
+  --cmd                 output username and password in 'net user jsmith
+                        password /add' format for use on Windows
+  --cmd-domain          output username and password in 'net user jsmith
+                        password /add /domain' format for use on Windows AD
 ```
 
 ## Examples
